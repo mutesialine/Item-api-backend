@@ -40,10 +40,22 @@ const updateItems= (req, res)=>{
     const id = req.params.id
     Item.findByIdAndUpdate(id , req.body)
     .then(result =>{
-        res.send('updated successful')
+        res.send('updated item successful')
     })
     .catch(err =>{
         console.log(err)
     })
 }
-module.exports= {createPostItems , getAllItems, getSingleItem ,updateItems}
+
+const deleteItem = (req, res)=>{
+    const id = req.params.id
+    Item.findByIdAndDelete(id)
+    .then(result =>{
+        res.send('Item deleted successful')
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+}
+
+module.exports= {createPostItems , getAllItems, getSingleItem ,updateItems, deleteItem}
