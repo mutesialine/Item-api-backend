@@ -36,5 +36,14 @@ const getSingleItem = (req, res)=>{
     })
 }
 
-
-module.exports= {createPostItems , getAllItems, getSingleItem}
+const updateItems= (req, res)=>{
+    const id = req.params.id
+    Item.findByIdAndUpdate(id , req.body)
+    .then(result =>{
+        res.send('updated successful')
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+}
+module.exports= {createPostItems , getAllItems, getSingleItem ,updateItems}
