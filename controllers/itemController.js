@@ -1,6 +1,6 @@
 const Item = require ('../models/items')
 
-const itemCreatePost = (req, res)=>{
+const createPostItems = (req, res)=>{
     const item = new Item({
         name:req.body.name ,
         description:req.body.description,
@@ -25,6 +25,16 @@ const getAllItems = (req, res)=>{
         console.log(err)
     })
 }
+const getSingleItem = (req, res)=>{
+    const id = req.params.id
+    Item.findById(id)
+    .then(result =>{
+        res.json(result)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+}
 
 
-module.exports= {itemCreatePost ,getAllItems}
+module.exports= {createPostItems , getAllItems, getSingleItem}

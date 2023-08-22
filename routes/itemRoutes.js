@@ -1,8 +1,9 @@
 const express = require('express')
-const {itemCreatePost, getAllItems} = require ('../controllers/itemController')
+const {createPostItems, getAllItems, getSingleItem} = require ('../controllers/itemController')
 const router = express.Router()
 
-router.post('/', itemCreatePost)
+router.post('/', createPostItems)
 router.get('/', getAllItems)
+router.get('/:id',getSingleItem)
 
 module.exports= router
