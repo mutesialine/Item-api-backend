@@ -14,4 +14,17 @@ const itemCreatePost = (req, res)=>{
         console.log(err)
        })
     }
-module.exports= {itemCreatePost}
+
+
+const getAllItems = (req, res)=>{
+    Item.find()
+    .then(result =>{
+        res.json(result)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+}
+
+
+module.exports= {itemCreatePost ,getAllItems}
