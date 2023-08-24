@@ -20,10 +20,11 @@ const createPostItems = (req, res)=>{
 const getAllItems = (req, res)=>{
     Item.find()
     .then(result =>{
-        res.json(result)
+        res.status(200).json(result)
     })
     .catch(err =>{
         console.log(err)
+        res.status(500).json({ error: 'Internal Server Error' })
     })
 }
 const getSingleItem = (req, res)=>{
@@ -34,6 +35,7 @@ const getSingleItem = (req, res)=>{
     })
     .catch(err =>{
         console.log(err)
+        ; 
     })
 }
 
