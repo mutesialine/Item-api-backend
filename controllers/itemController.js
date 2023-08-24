@@ -43,11 +43,16 @@ const getSingleItem = (req, res)=>{
 const updateItems= (req, res)=>{
     const id = req.params.id
     Item.findByIdAndUpdate(id , req.body)
-    .then(result =>{
-        res.send('updated item successful')
+    .then(result => {
+        if (result) {
+            res.status(200).send('Updated item successfully'); // 200 OK
+        } else {
+            res.status(404).json({ error: 'Item not found' }); // 404 Not Found
+        }
     })
-    .catch(err =>{
-        console.log(err)
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' }); // 500 Internal Server Error
     })
 }
 
